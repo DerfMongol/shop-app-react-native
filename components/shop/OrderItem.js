@@ -24,7 +24,7 @@ const OrderItem = props => {
                 <View style={styles.detailItems}>
                     {props.items.map(cartItem => (
                         <CartItem
-                            key={cartItem.propuctId}
+                            key={cartItem.productId}
                             quantity={cartItem.quantity}
                             amount={cartItem.sum}
                             title={cartItem.productTitle}
