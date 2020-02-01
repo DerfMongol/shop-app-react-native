@@ -10,9 +10,10 @@ import ProductOverviewScreen from '../screens/shop/ProductsOverviewScreen'
 import ProductDetailScreen from '../screens/shop/ProductDetailScreen'
 import CartScreen from '../screens/shop/CartScreen'
 import OrdersScreen from '../screens/shop/OrdersScreen'
-import UserProductsScreen from '../screens/user/UserProductsScreen'
-import Colors from '../constants/Colors'
+import EditProductsScreen from '../screens/user/EditProductsScreen'
 import UserProductScreen from '../screens/user/UserProductsScreen'
+import Colors from '../constants/Colors'
+import EditProductScreen from '../screens/user/EditProductsScreen'
 
 const defaultNavOptions = {
     headerStyle: {
@@ -70,7 +71,8 @@ const OrdersNavigator = createStackNavigator(
 
 const AdminNavigator = createStackNavigator(
     {
-        UserProducts: UserProductScreen
+        UserProducts: UserProductScreen,
+        EditProduct: EditProductScreen
     },
     {
         navigationOptions: {
