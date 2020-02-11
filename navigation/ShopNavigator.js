@@ -1,5 +1,5 @@
 import React from 'react'
-import { createAppContainer } from 'react-navigation'
+import { createAppContainer, createSwitchNavigator } from 'react-navigation'
 import { createStackNavigator } from 'react-navigation-stack'
 // import { createBottomTabNavigator } from 'react-navigation-tabs'
 import { createDrawerNavigator } from 'react-navigation-drawer'
@@ -10,7 +10,7 @@ import ProductOverviewScreen from '../screens/shop/ProductsOverviewScreen'
 import ProductDetailScreen from '../screens/shop/ProductDetailScreen'
 import CartScreen from '../screens/shop/CartScreen'
 import OrdersScreen from '../screens/shop/OrdersScreen'
-import EditProductsScreen from '../screens/user/EditProductsScreen'
+import AuthScreen from '../screens/user/AuthScreen'
 import UserProductScreen from '../screens/user/UserProductsScreen'
 import Colors from '../constants/Colors'
 import EditProductScreen from '../screens/user/EditProductsScreen'
@@ -37,9 +37,7 @@ const ProductsNavigator = createStackNavigator(
         navigationOptions: {
             drawerIcon: drawerConfig => (
                 <Ionicons
-                    name={
-                        Platform.OS === 'android' ? 'md-cart' : 'ios-cart'
-                    }
+                    name={Platform.OS === 'android' ? 'md-cart' : 'ios-cart'}
                     size={23}
                     color={drawerConfig.tintColor}
                 />
@@ -57,9 +55,7 @@ const OrdersNavigator = createStackNavigator(
         navigationOptions: {
             drawerIcon: drawerConfig => (
                 <Ionicons
-                    name={
-                        Platform.OS === 'android' ? 'md-list' : 'ios-list'
-                    }
+                    name={Platform.OS === 'android' ? 'md-list' : 'ios-list'}
                     size={23}
                     color={drawerConfig.tintColor}
                 />
@@ -103,4 +99,18 @@ const ShopNavigator = createDrawerNavigator(
     }
 )
 
-export default createAppContainer(ShopNavigator)
+const AuthNavigator = createStackNavigator(
+    {
+        Auth: AuthScreen
+    },
+    {
+        defaultNavigationOptions: defaultNavOptions
+    }
+)
+
+const MainNavigator = createSwitchNavigator({
+    Auth: AuthNavigator,
+    Shop: ShopNavigator
+})
+
+export default createAppContainer(MainNavigator)
